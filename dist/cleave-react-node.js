@@ -534,7 +534,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onBlur: owner.onBlur
 	        }, propsToTransfer);
 
-	        if (React.isValidComponent(inputComponent)) {
+	        if (React.isValidComponent(InputComponent)) {
 	            return React.createElement(InputComponent, props);
 	        }
 

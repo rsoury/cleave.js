@@ -467,7 +467,7 @@ var cleaveReactClass = CreateReactClass({
             ...propsToTransfer,
         }
 
-        if(React.isValidComponent(inputComponent)){
+        if(React.isValidComponent(InputComponent)){
             return (
                 <InputComponent
                     {...props}
