@@ -514,10 +514,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onChange = _owner$props2.onChange,
 	            onInit = _owner$props2.onInit,
 	            htmlRef = _owner$props2.htmlRef,
-	            propsToTransfer = _objectWithoutProperties(_owner$props2, ['value', 'options', 'onKeyDown', 'onFocus', 'onBlur', 'onChange', 'onInit', 'htmlRef']);
+	            InputComponent = _owner$props2.InputComponent,
+	            propsToTransfer = _objectWithoutProperties(_owner$props2, ['value', 'options', 'onKeyDown', 'onFocus', 'onBlur', 'onChange', 'onInit', 'htmlRef', 'InputComponent']);
 
-	        return React.createElement('input', _extends({
-	            type: 'text',
+	        var props = _extends({
 	            ref: function ref(_ref) {
 	                owner.element = _ref;
 
@@ -532,7 +532,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onChange: owner.onChange,
 	            onFocus: owner.onFocus,
 	            onBlur: owner.onBlur
-	        }, propsToTransfer));
+	        }, propsToTransfer);
+
+	        if (React.isValidComponent(inputComponent)) {
+	            return React.createElement(InputComponent, props);
+	        }
+
+	        return React.createElement('input', _extends({
+	            type: 'text'
+	        }, props));
 	    }
 	});
 

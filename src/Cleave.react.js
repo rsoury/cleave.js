@@ -447,26 +447,38 @@ var cleaveReactClass = CreateReactClass({
     render: function () {
         var owner = this;
         // eslint-disable-next-line
-        var { value, options, onKeyDown, onFocus, onBlur, onChange, onInit, htmlRef, ...propsToTransfer } = owner.props;
+        var { value, options, onKeyDown, onFocus, onBlur, onChange, onInit, htmlRef, InputComponent, ...propsToTransfer } = owner.props;
+
+        var props = {
+            ref: function (ref) {
+                owner.element = ref;
+
+                if (!htmlRef) {
+                    return;
+                }
+
+                htmlRef.apply(this, arguments);
+            },
+            value: owner.state.value,
+            onKeyDown: owner.onKeyDown,
+            onChange: owner.onChange,
+            onFocus: owner.onFocus,
+            onBlur: owner.onBlur,
+            ...propsToTransfer,
+        }
+
+        if(React.isValidComponent(inputComponent)){
+            return (
+                <InputComponent
+                    {...props}
+                />
+            );
+        }
 
         return (
             <input
                 type="text"
-                ref={function (ref) {
-                    owner.element = ref;
-
-                    if (!htmlRef) {
-                        return;
-                    }
-
-                    htmlRef.apply(this, arguments);
-                }}
-                value={owner.state.value}
-                onKeyDown={owner.onKeyDown}
-                onChange={owner.onChange}
-                onFocus={owner.onFocus}
-                onBlur={owner.onBlur}
-                {...propsToTransfer}
+                {...props}
             />
         );
     }
