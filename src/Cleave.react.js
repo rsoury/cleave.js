@@ -426,7 +426,7 @@ var cleaveReactClass = CreateReactClass({
         }
 
         var endPos = owner.element.selectionEnd;
-        var oldValue = owner.element.value;
+        var oldValue = owner.element.value || "";
         var newValue = pps.result;
 
         owner.lastInputValue = newValue;
@@ -467,7 +467,7 @@ var cleaveReactClass = CreateReactClass({
             ...propsToTransfer,
         }
 
-        if(React.isValidElement(InputComponent)){
+        if(typeof InputComponent !== 'undefined'){
             return (
                 <InputComponent
                     {...props}

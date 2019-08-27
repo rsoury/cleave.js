@@ -483,7 +483,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 
 	        var endPos = owner.element.selectionEnd;
-	        var oldValue = owner.element.value;
+	        var oldValue = owner.element.value || "";
 	        var newValue = pps.result;
 
 	        owner.lastInputValue = newValue;
@@ -534,7 +534,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onBlur: owner.onBlur
 	        }, propsToTransfer);
 
-	        if (React.isValidElement(InputComponent)) {
+	        if (typeof InputComponent !== 'undefined') {
 	            return React.createElement(InputComponent, props);
 	        }
 
